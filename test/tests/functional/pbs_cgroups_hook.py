@@ -2063,8 +2063,10 @@ if %s e.job.in_ms_mom():
         cput_usage = 0.0
         mem_usage = 0
         vmem_usage = 0
-        # Faster systems might expect to see the usage you finally expect
-        # recorder after 8-10 seconds; on TH it can take up to a minute
+        # On faster systems you might expect to see the usage you finally want
+        # recorded after 8-10 seconds; on TH it can take up to a minute
+        # Pointless to sleep less because the job itself has sleeps to
+        # gradually build up memory usage
         time.sleep(8)
         for count in range(30):
             time.sleep(2)
